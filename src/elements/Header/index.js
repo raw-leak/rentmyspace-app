@@ -1,13 +1,20 @@
 import React from "react";
-import { HeaderContainer } from "./styles";
-import ButtonHeader from "../HeaderButtons";
+import { HeaderContainer,InputContainer } from "./styles";
+import HeaderButtons from "../HeaderButtons";
+import SearchInput from "../SearchInput";
+import Register from "../../components/Register";
 
-function Header() {
+function Map() {
   return (
     <HeaderContainer>
-      <ButtonHeader />
+      <HeaderButtons />
+      <SearchInput />
+      {/* <Register /> */}
     </HeaderContainer>
+    <HeaderContainer>
+    </HeaderContainer>
+
   );
 }
 
-export default Header;
+export default Map;

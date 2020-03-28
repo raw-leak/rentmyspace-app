@@ -9,8 +9,11 @@ import { Link as LinkRouter } from "@reach/router";
 //   width: 75px;
 // `;
 
-export const ButtonContainer = styled.header`
+export const BodySection = styled.body`
+  z-index: 1;
+  position: absolute;
   display: flex;
-  justify-content: flex-end;
-  height:30px;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
 `;
