@@ -1,10 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { MainSection } from "./styles";
 
-function Map({ lat, lng }) {
+function Map() {
+  const [initCoords, setInitCoords] = useState({
+    lat: 41.3887901,
+    lng: 2.1589899
+  });
+  
   useEffect(() => {
     renderMap();
     window.initMap = initMap;
+
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(position => {
+        setInitCoords({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        });
+      });
+    } else {
+      /* la geolocalización NO está disponible */
+    }
   }, []);
 
   const loadScript = url => {
@@ -22,9 +38,9 @@ function Map({ lat, lng }) {
     );
   };
 
-  const initMap = ({ lat, lng }) => {
+  const initMap = () => {
     const map = new window.google.maps.Map(document.getElementById("map"), {
-      center: { lat: -34.397, lng: 150.644 },
+      center: { lat: initCoords.lat, lng: initCoords.lng },
       zoom: 8
     });
   };
